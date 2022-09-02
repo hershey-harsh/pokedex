@@ -14,6 +14,37 @@ class Pokemon:
         
         self.info = json.loads(response.text)
         
-    def name(self):
-      return self.info["pokemon"]
+        self.name = self.info["pokemon"]
+        
+        self.description = self.info["description"]
+        
+        names = []
+        for i in self.info["names"].split(", "):
+            names.append(i)
+        self.names = names
+        
+        self.region = self.info["region"]
+        
+        types = []
+        for i in self.info["types"].split(", "):
+            names.append(i)
+        self.types = types
+        
+        self.evolution = self.info["evolution"]
+        
+        self.dex_number = self.info["dex_number"]
+        
+        self.appearance = self.info["appearance"]
+        self.appearance.height = self.appearance["height"]
+        self.appearance.weight = self.appearance["weight"]
+        
+        self.base_stats = self.info["base_stats"]
+        self.base_stats.attack = self.base_stats["attack"]
+        self.base_stats.defense = self.base_stats["defense"]
+        self.base_stats.hit_points = self.base_stats["hit_points"]
+        self.base_stats.speed = self.base_stats["speed"]
+        self.base_stats.speed_Attack = self.base_stats["speed_Attack"]
+        self.base_stats.speed_Defense = self.base_stats["speed_Defense"]
+        
+        
         
