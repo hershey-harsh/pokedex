@@ -1,12 +1,19 @@
-from aiohttp import ClientSession, TCPConnector
+import requests
+import json
 
-API_URL = "https://api.poketox.me"
+BASE_URL = "http://127.0.0.1:5000/"
 
-async def predict(url, moveset=False):
-  if url is None:
-    return "Valid url not provided."
-  
-  async with ClientSession(connector=TCPConnector(verify_ssl=False)) as session:
-        response = f'{API_URL}/identify/{url}'
-        async with session.get(response) as resp:
-            return await resp.text()
+class Pokemon:
+    
+    def __init__(self, pokemon = None, url = None):
+        if pokemon is None and url:
+          response = requests.get(f"{BASE_URL}/identify/{url}")
+        
+        if pokemon and url is None:
+          response = requests.get(f"{BASE_URL}/pokemon/{pokemon}")
+        
+        self.info = json.loads(response.text)
+        
+    def name(self):
+      return self.info["pokemon"]
+        
