@@ -35,4 +35,13 @@ class Pokemon:
         self.dex_number = self.info["dex_number"]
         
         self.appearance = self.info["appearance"]
-        self.appearance.height = "Hi"
+        self.height = "Hi"
+        self.weight = self.info["appearance"]["weight"]
+        
+        self.base_stats = self.info["base_stats"]
+        self.attack = self.info["base_stats"]["attack"]
+        self.defense = self.info["base_stats"]["defense"]
+        self.hit_points = self.info["base_stats"]["hit_points"]
+        self.speed = self.info["base_stats"]["speed"]
+        self.speed_Attack = self.info["base_stats"]["speed_Attack"]
+        self.speed_Defense = self.info["base_stats"]["speed_Defense"]
