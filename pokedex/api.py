@@ -1,11 +1,9 @@
 import requests
 import json
 
-BASE_URL = "http://127.0.0.1:5000/"
-
 class Pokemon:
     
-    def __init__(self, pokemon = None, url = None):
+    def __init__(self, BASE_URL = "http://127.0.0.1:5000/", pokemon = None, url = None):
         if pokemon is None and url:
           response = requests.get(f"{BASE_URL}/identify/{url}")
         
